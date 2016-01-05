@@ -1,0 +1,24 @@
+---
+title: "Using ggvis with knitr and rmarkdown"
+author: Winston Chang
+output:
+  ioslides_presentation:
+    widescreen: true
+    fig_width: 6
+    fig_height: 4
+---
+
+## First Plot
+
+```{r, message = FALSE}
+library(ggvis)
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>% layer_points()
+```
+
+## Second Plot
+
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points() %>%
+  layer_smooths()
+```

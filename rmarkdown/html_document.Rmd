@@ -1,0 +1,27 @@
+---
+title: "Using ggvis with knitr and rmarkdown"
+output:
+  html_document:
+    fig_width: 4
+    fig_height: 2
+---
+
+```{r echo=FALSE}
+# Set up default dimensions. Width and height are multiplied by dpi to get
+# pixel dimensions.
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3)
+```
+
+To embed a ggvis plot just call `ggvis`:
+
+```{r, message = FALSE}
+library(ggvis)
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>% layer_points()
+```
+
+
+```{r, fig.width = 8, fig.height = 6}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points() %>%
+  layer_smooths()
+```
